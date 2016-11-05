@@ -16,9 +16,13 @@ if [[ "$1" == "-h" ]]; then
 fi
 
 echo "---> Building application from source..."
+echo "     : Sourcing scl_source for rh-ruby22"
 source scl_source enable rh-ruby22
+echo "     : Installing gem and requirements for jekyll"
 gem install jekyll
+echo "     : Installing bundle"
 bundle install
+echo "     : Building jekyll site"
 jekyll build --source /tmp/src --destination /tmp/src/_site
 
 echo "---> Installing application source"
