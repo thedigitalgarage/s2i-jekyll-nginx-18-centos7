@@ -15,7 +15,7 @@ LABEL io.k8s.description="Platform for Jekyll based web sites" \
 USER 0
 
 # Copy the S2I scripts from .s2i/bin/ to /usr/libexec/s2i
-COPY ./.s2i/bin/* /usr/libexec/s2i
+COPY ./.s2i/bin/. /usr/libexec/s2i
 
 # Install required packages here:
 RUN yum install -y \
