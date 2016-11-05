@@ -28,7 +28,7 @@ RUN yum install -y \
     && yum clean all -y
 
 # Install the required gems
-RUN scl enable rh-ruby22 gem install jekyll
+RUN scl enable rh-ruby22 bash -c "gem install jekyll"
 
 # Drop the root user and make the content of /opt/app-root owned by user 1001
 RUN chown -R 1001:1001 /opt/app-root
