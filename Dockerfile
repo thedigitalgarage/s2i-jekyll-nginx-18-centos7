@@ -17,6 +17,9 @@ USER 0
 # Copy the S2I scripts from .s2i/bin/ to /usr/libexec/s2i
 COPY ./.s2i/bin/. /usr/libexec/s2i
 
+# Copy the update config file
+COPY ./.s2i/etc/. /opt/app-root/etc
+
 # Install required packages here:
 RUN yum install -y \
       rh-ruby22 \
