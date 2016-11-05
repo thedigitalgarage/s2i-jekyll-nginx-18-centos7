@@ -1,0 +1,33 @@
+#!/bin/bash -e
+#
+# S2I assemble script for the 'jekyll-nginx-18-centos7' image.
+# The 'assemble' script builds your application source so that it is ready to run.
+#
+# For more information refer to the documentation:
+#	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
+#
+
+if [[ "$1" == "-h" ]]; then
+	# If the 'jekyll-nginx-18-centos7' assemble script is executed with '-h' flag,
+	# print the usage.
+	exec /usr/local/s2i/usage
+fi
+
+# Restore artifacts from the previous build (if they exist).
+#
+if [ "$(ls /tmp/artifacts/ 2>/dev/null)" ]; then
+  echo "---> Restoring build artifacts..."
+  mv /tmp/artifacts/. ./
+fi
+
+# Run the existing assemble script
+/usr/local/s2i/assemble
+
+echo "---> Building application from source..."
+# Jekyll build steps
+source scl_source enable rh-ruby22
+bundle install
+jekyll build .
+
+# Fix source directory permissions
+fix-permissions ./

@@ -1,0 +1,11 @@
+#!/bin/bash -e
+#
+# S2I run script for the 'jekyll-nginx-18-centos7' image.
+# The run script executes the server that runs your application.
+#
+# For more information see the documentation:
+#	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
+#
+
+# We are running the existing run script included with our base image
+exec /usr/libexec/s2i/run
