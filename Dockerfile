@@ -6,10 +6,10 @@ MAINTAINER Josh Preston <the@mrjoshuap.com>
 ENV BUILDER_VERSION 1.0
 
 # Set labels used in OpenShift to describe the builder image
-LABEL io.k8s.description="Platform for Jekyll based web sites" \
-      io.k8s.display-name="jekyll 3.3.0" \
+LABEL io.k8s.description="Builder for Jekyll based static sites" \
+      io.k8s.display-name="jekyll" \
       io.openshift.expose-services="8080:http" \
-      io.openshift.tags="jekyll,3.3.0,nginx-18,centos"
+      io.openshift.tags="jekyll,ruby-22,nginx-18,centos"
 
 # Become the root user
 USER 0
