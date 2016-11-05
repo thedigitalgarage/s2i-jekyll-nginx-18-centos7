@@ -13,21 +13,21 @@ if [[ "$1" == "-h" ]]; then
 	exec /usr/local/s2i/usage
 fi
 
-# Restore artifacts from the previous build (if they exist).
-#
-if [ "$(ls /tmp/artifacts/ 2>/dev/null)" ]; then
-  echo "---> Restoring build artifacts..."
-  mv /tmp/artifacts/. ./
-fi
-
-# Run the existing assemble script
-/usr/local/s2i/assemble
-
 echo "---> Building application from source..."
-# Jekyll build steps
 source scl_source enable rh-ruby22
+gem install jekyll
 bundle install
-jekyll build .
+jekyll build --source /tmp/src --destination /tmp/src/_site
+
+echo "---> Installing application source"
+cp -Rf /tmp/src/_site/. ./
+
+if [ -d /tmp/src/nginx-cfg ]; then
+  echo "---> Copying nginx configuration files..."
+  if [ "$(ls -A ./nginx-cfg/*.conf)" ]; then
+    cp -v /tmp/src/nginx-cfg/*.conf "${NGINX_CONFIGURATION_PATH}"
+  fi
+fi
 
 # Fix source directory permissions
 fix-permissions ./
