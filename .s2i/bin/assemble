@@ -7,10 +7,12 @@
 #	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
 #
 
+echo "Assembling jekyll-nginx-18-centos7"
+
 if [[ "$1" == "-h" ]]; then
 	# If the 'jekyll-nginx-18-centos7' assemble script is executed with '-h' flag,
 	# print the usage.
-	exec /usr/local/s2i/usage
+	exec /usr/libexec/s2i/usage
 fi
 
 echo "---> Building application from source..."
