@@ -16,12 +16,9 @@ if [[ "$1" == "-h" ]]; then
 fi
 
 echo "---> Building application from source..."
-echo "     : Installing gem and requirements for jekyll"
-gem install jekyll
-echo "     : Installing bundle"
 bundle install
 echo "     : Building jekyll site"
-jekyll build --source /tmp/src --destination /tmp/src/_site
+bundle exec jekyll build --source /tmp/src --destination /tmp/src/_site
 
 echo "---> Installing application source"
 cp -Rf /tmp/src/_site/. ./
