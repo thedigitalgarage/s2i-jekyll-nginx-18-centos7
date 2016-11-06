@@ -29,8 +29,8 @@ if [ -d /tmp/src/nginx-cfg ]; then
   fi
 fi
 
-echo "---> Installing application source"
-rm -rf ./bin
+echo "---> Cleaning up application source"
+rm -rf ./.gem ./bin ./Dockerfile ./Gemfile ./Gemfile.lock ./Makefile
 
 # Fix source directory permissions
 fix-permissions ./
