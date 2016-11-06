@@ -16,6 +16,9 @@ Versions
 Ruby versions currently provided are:
 * ruby-2.2
 
+nginx versions currently provided are:
+* nginx-1.8
+
 CentOS versions currently supported are:
 * CentOS7
 
