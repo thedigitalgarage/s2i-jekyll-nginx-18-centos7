@@ -16,6 +16,7 @@ fi
 echo "---> Building application from source..."
 pushd /tmp/src
 bundle install
+bundle update
 bundle exec jekyll build
 popd
 
