@@ -16,7 +16,7 @@ fi
 echo "---> Building application from source..."
 pushd /tmp/src
 bundle install
-bundle exec jekyll build --source . --destination /tmp/src/_site
+bundle exec jekyll build
 popd
 
 echo "---> Installing application source"
@@ -28,6 +28,9 @@ if [ -d /tmp/src/nginx-cfg ]; then
     cp -v /tmp/src/nginx-cfg/*.conf "${NGINX_CONFIGURATION_PATH}"
   fi
 fi
+
+echo "---> Installing application source"
+rm -rf ./bin
 
 # Fix source directory permissions
 fix-permissions ./
