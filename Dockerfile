@@ -22,6 +22,7 @@ COPY ./.s2i/etc/. /opt/app-root/etc
 
 # Install required packages here:
 RUN yum install -y \
+      make \
       rh-ruby22 \
       rh-ruby22-ruby-devel \
       rh-ruby22-rubygem-bundler \
