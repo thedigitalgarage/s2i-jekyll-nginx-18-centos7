@@ -1,7 +1,7 @@
 # jekyll-nginx-18-centos7
 FROM centos/nginx-18-centos7
 
-MAINTAINER Josh Preston <the@mrjoshuap.com>
+MAINTAINER John McCawley <john.mccawley@thedigitalgarage.io>
 
 ENV BUILDER_VERSION 1.0
 
@@ -21,7 +21,8 @@ COPY ./.s2i/bin/. /usr/libexec/s2i
 COPY ./.s2i/etc/. /opt/app-root/etc
 
 # Install required packages here:
-RUN yum groupinstall 'Development Tools'
+RUN yum groupinstall -y 'Development Tools' \
+    && yum clean all -y
 
 RUN yum install -y \
       rh-ruby22 \
