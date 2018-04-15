@@ -21,9 +21,9 @@ COPY ./.s2i/bin/. /usr/libexec/s2i
 COPY ./.s2i/etc/. /opt/app-root/etc
 
 # Install required packages here:
+RUN yum groupinstall 'Development Tools'
+
 RUN yum install -y \
-      make \
-      gcc \
       rh-ruby22 \
       rh-ruby22-ruby-devel \
       rh-ruby22-rubygem-bundler \
